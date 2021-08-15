@@ -1,0 +1,29 @@
+HTML
+安装软件：WebStorm（需要破解）
+超文本标记语言。他是一种标识语言，不是编程语言，不能使用逻辑运算
+              超文本：是一种组织信息的方法，通过超级链接将多种媒介关联起来
+                 标签：用<>包裹的具有一定含义的内容  比如<Strong>...</Strong>
+
+一：用<html>开头</html>结尾
+1.头部：用来完成一个网页的相关设置
+<head>
+
+<meta charset="utf-8">     //汉字编码  meta:元，主要用来完成对应设置
+<meta name = "keywords" content="">  //设置一个网站的搜索关键字
+<meta name = "description" content= "">   //网站的描述
+
+<title>  第一个网页<title>     //标题
+
+link:favicon按tab键，在href中放图片链接     //设置网站图标
+<style>
+//书写样式的地方
+</style>
+</head>
+2.主题部分
+<body>
+<p>这是一个段落</p>
+<script>
+//放脚本代码的地方
+</script>
+</body>
+

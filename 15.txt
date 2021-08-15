@@ -1,0 +1,158 @@
+1.函数
+    函数就是将具有一定功能的一段JS代码的封装，可以在程序的多个地方被反复调用。
+    1）定义函数
+        格式一：
+            function 函数名（[形参列表]）{
+                函数体；
+                [return [<表达式>];]
+            }
+        格式二：
+            var 变量名 = function（[形参列表]）{
+                函数体；
+                [return [<表达式>];]
+            }
+        格式三：
+            ;(function（[形参列表]）{
+                函数体；
+                [return [<表达式>];]
+            })([实参列表]);
+            上面的函数叫立即执行函数表达式（IIFE），它会自动调用自身，不被在其它地方被调用，一般用于JS库或JS插件的封装或闭包处理。
+    2）函数调用
+        函数名([实参列表]);
+
+        Tips:
+            函数不会自动执行（IIFE（立即执行函数表达式）除外），必须通过调用才能执行。
+    3）return
+        函数可以通过return返回结果，如果return没有返回结果，表示结束函数的调用，且返回调用处。
+    4）arguments对象
+        返回实参列表的一个伪数组。
+        一般用在不确定传过来的实参的个数的情况下。
+2.对象(object)
+    对象，其实就是一种类型，即引用类型。用于将数据和功能组织在一起。
+    对象由属性和方法组成，通常用键值对定义。
+    1）对象定义
+        a)new构建
+            new Object([参数]);
+        b)字面量定义
+            var obj = {
+                key: value,// 属性
+                fn: function(){ // 方法
+                    ...
+                }
+            }
+    2）对象的引用
+        a)对象名.属性名
+          对象名.方法名([实参列表])
+        b)对象名[属性名]
+3.数组（Array）
+    数组将一组数据组合到一起，并存入到一个变量中，数组是有序排列的，占用一段连续的内存空间。
+    一个数组可以存储不同类型的数据。
+    1）定义数组
+        a.new
+            new Array([值列表])
+       arry1.push(1)   //向数组添加数据
+        b.字面量创建
+            var arr = [值列表]
+    2）获取数组元素值
+        数组名[下标] // 下标可以是一个数值型常量，也可以是一个表达式或函数或变量
+    3）遍历数组
+        一维数组用一个循环实现；二维数组必须用双重循环实现（先行后列）。
+        a.for
+        b.for...in      // 推荐写法
+        c.forEach()
+    4）数组的属性和方法
+        a.length属性
+            获取数组的长度。
+        b.方法
+            i)push()
+                向数组中添加数组到数组最后。
+            ii)pop()
+                删除数组最后一个元素。
+            iii)unshift()
+                向数组头部添加数据。
+            iv)shift()
+                删除数组第一元素。
+            v)concat()      var arr3=arr1.concat(arr2);    可以接多个   var var3=arr1.concat(arr2，arr3)
+                将两个或多个数组组合成一个数组。
+            vi)reverse()     var arr2=var1.reverse();
+                对数组进行倒序处理。
+            vii)join()     var arr1=var2.join();   中间可加东西   var var1=var2.join(‘%’);
+                将数组转换为字符串。
+            viii)splice()    var arr1=arr2.splice(1,2)   从下标为1的位置开始删除，删2个
+                                var arr1=arr2.splice(1,2,'aa','bb','cc')  删下标1开始2个，从下标1开始添加aa等
+                                var arr1=arr2.splice(1,0,'aa','bb','cc')  从下标1开始删0个，开始添加aa等
+                                var arr1=arr2.splice(0,0,'aa','bb','cc')   从头添加
+                                var arr1=arr2.splice(arr2.length,0,'aa','bb','cc')   从尾部添加                                       删除、修改或向数组中添加数据。
+
+            split（）  将字符串拆分为一个数组
+             var result =str.split("3");
+
+4.Function类型
+    Function是一个用来构建函数的类（构造函数）。
+
+    函数内部属性
+        在函数内部，有两个特殊的对象：arguments和this。
+            callee:
+                arguments是一个类数组对象，包含着传入函数中的所有参数，主要用途是保存函数参数。
+                但这个对象还有一个名叫callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数。
+                也即是说可以通过arguments.callee调用函数自身，一般用于函数的递归调用。
+
+                函数自己调用自己叫函数的递归调用。
+
+            this指针对象
+                在全局中this指向的是window（在JS中没有global这个全局对象，而JS的全局对象是window）；
+                在函数中this指向的是这个函数执行所操作的当前对象。
+
+5.正则表达式
+              1)用于定义一些字符串的规则，来检查一个字符串是否符合规则
+              2）获取字符串中符合规则的内容提取出来
+ var 变量 =new RegExp("正则表达式","匹配模式")
+ var reg=new RegExp("a");    用于检查字符串是否含有a，分大小写
+在构造函数中可以传递一个匹配模式用于作为第二参数
+
+正则表达式的方法；
+var reg=new RegExp("a"); 
+reg.test("abc"）
+         使用这个方法可以用于检查一个字符串是否符合规则，符合返回true，否则为flase
+
+字面量创建    var 变量 =/正则表达式/匹配模式
+ reg=/a/i     含有a忽略大小写
+reg=/a/g    全局匹配，匹配所有的对象
+使用|或[]表示或     reg=/a|b/     reg=/[ab]/     里面有a或b
+检查一个字符串是否有字母  reg=/[a-zA-Z]/   reg=/[a-z]/i
+除了  reg=/[^ab]/    除了ab以外都可以
+var reg=/a{3}/  a连续出现3次
+reg=/(ab){3}/   ab连续出现3次
+reg=/ab{1,3}c/    b出现1~3次
+reg=/b{3,}/    b出现3次以上
+reg=/ab+c/    ac之间至少1个b   
+reg=/ab*c/   有没有b都行
+reg=/ab?c/   有0或1个b
+reg=/^a/  开头为a    reg=/[^a]/除了a
+reg=/a$/ 结尾为a
+reg=/^a$/  只能是一个a   console.log(reg.test("a"))   其他不行，例如("aaa")
+reg=/./    表示任意字符
+reg=/\./   表示有没有.,用转义字符
+\\表示\
+\w      表示任意字母，数字，下划线   [A-z0-9_]
+\W      除了字母，数字，下划线
+\d        任意的数字
+\D       除了数字
+\s        空格
+\S        除了空格
+\b        单词边界            /\bchild\b/  前后不能有词
+\B       除了单词边界
+
+str=str.replace(/^\s*|\s*$/g,"");   去掉开头和结尾的空格
+
+
+去掉重复的数
+for(var i=0;i<arr.length;i++){
+if(newArr.indexOf(arr[i])<0){
+newArr.push(arr[i]);
+}
+}
+
+
+
+
